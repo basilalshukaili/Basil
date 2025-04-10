@@ -48,7 +48,6 @@ ul {
     list-style: none;
 }
 
-/* Fixed Image Styling */
 img {
     max-width: 100%;
     height: auto;
@@ -198,7 +197,7 @@ nav {
     transition: var(--transition);
 }
 
-/* Hero Section with Fixed Image */
+/* Hero Section */
 .hero {
     padding: 180px 0 100px;
     background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
@@ -245,22 +244,22 @@ nav {
     align-items: center;
 }
 
-/* Optimized Profile Image for 410x609 with No Background */
+/* Updated Profile Image for 380x373 */
 .profile-image {
-    width: 410px;              /* Native width of your image */
-    height: 609px;            /* Native height of your image */
+    width: 380px;              /* Matches new image width */
+    height: 373px;            /* Matches new image height */
     border-radius: 50%;
     overflow: hidden;
     border: 5px solid white;
     box-shadow: var(--shadow);
     animation: float 6s ease-in-out infinite;
-    background: transparent;  /* Ensures no background color conflicts with PNG */
+    background: transparent;  /* Preserves PNG transparency */
 }
 
 .profile-image img {
     width: 100%;
     height: 100%;
-    object-fit: contain;      /* Shows full image without cropping, preserves transparency */
+    object-fit: contain;      /* Shows full image without cropping */
     background: transparent;  /* Maintains no background */
 }
 
@@ -643,7 +642,7 @@ footer {
     margin-top: 40px;
 }
 
-/* Responsive Styles */
+/* Responsive Styles - Updated for 380x373 */
 @media screen and (max-width: 992px) {
     .hero-content {
         flex-direction: column-reverse;
@@ -682,10 +681,9 @@ footer {
         left: 10px;
     }
 
-    /* Adjust profile image for medium screens */
     .profile-image {
         width: 300px;
-        height: 445px; /* Maintains 410/609 ratio */
+        height: 294px; /* Maintains 380/373 ratio (~1.018) */
     }
 }
 
@@ -739,10 +737,9 @@ footer {
         font-size: 1.5rem;
     }
     
-    /* Adjust profile image for smaller screens */
     .profile-image {
         width: 250px;
-        height: 370px; /* Maintains 410/609 ratio */
+        height: 245px; /* Maintains 380/373 ratio (~1.018) */
     }
     
     .contact-info {
@@ -751,9 +748,8 @@ footer {
 }
 
 @media screen and (max-width: 480px) {
-    /* Further adjust profile image for very small screens */
     .profile-image {
         width: 200px;
-        height: 296px; /* Maintains 410/609 ratio */
+        height: 196px; /* Maintains 380/373 ratio (~1.018) */
     }
 }
