@@ -1,4 +1,4 @@
-// Main application JavaScript for Cybersecurity Skills Galaxy
+// Main application JavaScript for Cybersecurity Skills Galaxy - READ ONLY VERSION
 
 // Global variables
 window.skillsData = null;
@@ -14,17 +14,7 @@ window.animationFrameId = null;
 
 // Initialize the application when DOM is fully loaded
 document.addEventListener('DOMContentLoaded', function() {
-  // Load the skills data
-  window.skillsData = JSON.parse(localStorage.getItem('cyberskills_data'));
-  
-  // If no data in localStorage, use the default data and save it
-  if (!window.skillsData) {
-    console.log("No data in localStorage, using default data");
-    saveData();
-  }
-  
-  // Check if the user has completed the specified skill
-  checkPreCybersecurityNetworkingOsiPhysicalLayer();
+  console.log("DOM fully loaded, initializing application");
   
   // Initialize the UI
   initUI();
@@ -44,40 +34,10 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-// Check if the user has completed the Pre-Cybersecurity -> Networking -> OSI Model -> Physical Layer skill
-window.checkPreCybersecurityNetworkingOsiPhysicalLayer = function() {
-  // If data is not yet loaded, return
-  if (!window.skillsData || !window.skillsData.categories) return;
-  
-  // Find the skill and mark it as completed if not already
-  const networkingCategory = window.skillsData.categories[0].subcategories.find(sub => sub.id === "1.1");
-  if (networkingCategory) {
-    const osiModel = networkingCategory.skills.find(skill => skill.id === "1.1.1");
-    if (osiModel && osiModel.subskills) {
-      const physicalLayer = osiModel.subskills.find(subskill => subskill.id === "1.1.1.1");
-      if (physicalLayer && !physicalLayer.completed) {
-        physicalLayer.completed = true;
-        physicalLayer.completedOn = new Date().toISOString();
-        
-        // Add to user's completed skills
-        if (!window.skillsData.user.completedSkills.some(s => s.id === physicalLayer.id)) {
-          window.skillsData.user.completedSkills.push({
-            id: physicalLayer.id,
-            name: physicalLayer.name,
-            category: "Pre-Cybersecurity Fundamentals > Networking > OSI Model",
-            completedOn: physicalLayer.completedOn
-          });
-        }
-        
-        // Save the updated data
-        saveData();
-      }
-    }
-  }
-};
-
 // Initialize the UI components
 window.initUI = function() {
+  console.log("Initializing UI components");
+  
   // Set user name
   document.querySelectorAll('.user-name').forEach(el => {
     el.textContent = window.skillsData.user.name;
@@ -112,10 +72,50 @@ window.initUI = function() {
   if (document.getElementById('progress-tracker') && document.getElementById('progress-tracker').classList.contains('active')) {
     initCharts();
   }
+  
+  // Hide all action buttons since this is read-only
+  hideActionButtons();
+};
+
+// Hide all action buttons (mark complete/incomplete)
+window.hideActionButtons = function() {
+  // Hide mark complete/incomplete buttons in skill details panel
+  const markCompleteBtn = document.getElementById('mark-complete');
+  const markIncompleteBtn = document.getElementById('mark-incomplete');
+  
+  if (markCompleteBtn) markCompleteBtn.style.display = 'none';
+  if (markIncompleteBtn) markIncompleteBtn.style.display = 'none';
+  
+  // Hide modal mark complete/incomplete buttons
+  const modalMarkCompleteBtn = document.getElementById('modal-mark-complete');
+  const modalMarkIncompleteBtn = document.getElementById('modal-mark-incomplete');
+  
+  if (modalMarkCompleteBtn) modalMarkCompleteBtn.style.display = 'none';
+  if (modalMarkIncompleteBtn) modalMarkIncompleteBtn.style.display = 'none';
+  
+  // Hide remove buttons in completed skills list
+  document.querySelectorAll('.skills-table .btn.secondary.small').forEach(btn => {
+    btn.style.display = 'none';
+  });
+  
+  // Add read-only notice to skill details panel
+  const skillDetailsPanel = document.querySelector('.skill-details-panel .panel-content');
+  if (skillDetailsPanel) {
+    const readOnlyNotice = document.createElement('div');
+    readOnlyNotice.className = 'read-only-notice';
+    readOnlyNotice.innerHTML = '<p><strong>Read-Only Mode:</strong> Skills can only be updated by manually editing the data.js file.</p>';
+    readOnlyNotice.style.marginTop = '20px';
+    readOnlyNotice.style.padding = '10px';
+    readOnlyNotice.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+    readOnlyNotice.style.borderRadius = '5px';
+    skillDetailsPanel.appendChild(readOnlyNotice);
+  }
 };
 
 // Set up event listeners
 window.setupEventListeners = function() {
+  console.log("Setting up event listeners");
+  
   // Galaxy view event listeners
   const galaxyCanvas = document.getElementById('galaxy-canvas');
   if (galaxyCanvas) {
@@ -167,44 +167,10 @@ window.setupEventListeners = function() {
     });
   }
   
-  // Mark complete/incomplete buttons
-  if (document.getElementById('mark-complete')) {
-    document.getElementById('mark-complete').addEventListener('click', function() {
-      if (window.selectedSkill) {
-        markSkillComplete(window.selectedSkill.id);
-      }
-    });
-  }
-  
-  if (document.getElementById('mark-incomplete')) {
-    document.getElementById('mark-incomplete').addEventListener('click', function() {
-      if (window.selectedSkill) {
-        markSkillIncomplete(window.selectedSkill.id);
-      }
-    });
-  }
-  
   // Modal close button
   const closeModal = document.querySelector('.close-modal');
   if (closeModal) {
     closeModal.addEventListener('click', function() {
-      document.getElementById('skill-modal').classList.remove('active');
-    });
-  }
-  
-  // Modal mark complete/incomplete buttons
-  if (document.getElementById('modal-mark-complete')) {
-    document.getElementById('modal-mark-complete').addEventListener('click', function() {
-      const skillId = document.getElementById('modal-skill-id').textContent;
-      markSkillComplete(skillId);
-      document.getElementById('skill-modal').classList.remove('active');
-    });
-  }
-  
-  if (document.getElementById('modal-mark-incomplete')) {
-    document.getElementById('modal-mark-incomplete').addEventListener('click', function() {
-      const skillId = document.getElementById('modal-skill-id').textContent;
-      markSkillIncomplete(skillId);
       document.getElementById('skill-modal').classList.remove('active');
     });
   }
@@ -231,8 +197,13 @@ window.setupEventListeners = function() {
 
 // Initialize the galaxy visualization
 window.initGalaxy = function() {
+  console.log("Initializing galaxy visualization");
+  
   window.galaxyCanvas = document.getElementById('galaxy-canvas');
-  if (!window.galaxyCanvas) return;
+  if (!window.galaxyCanvas) {
+    console.error("Galaxy canvas element not found");
+    return;
+  }
   
   window.galaxyContext = window.galaxyCanvas.getContext('2d');
   
@@ -259,8 +230,13 @@ window.resizeCanvas = function() {
 
 // Create skill nodes from data
 window.createSkillNodes = function() {
+  console.log("Creating skill nodes from data");
+  
   window.skillNodes = [];
-  if (!window.skillsData || !window.skillsData.categories) return;
+  if (!window.skillsData || !window.skillsData.categories) {
+    console.error("Skills data not available");
+    return;
+  }
   
   // Create nodes for each category
   window.skillsData.categories.forEach((category, categoryIndex) => {
@@ -631,10 +607,6 @@ window.selectNode = function(node) {
       prerequisitesList.appendChild(li);
     }
     
-    // Show/hide buttons based on status
-    document.getElementById('mark-complete').style.display = node.completed ? 'none' : 'block';
-    document.getElementById('mark-incomplete').style.display = node.completed ? 'block' : 'none';
-    
     // Show the panel
     panel.classList.add('active');
   }
@@ -823,282 +795,9 @@ window.checkPrerequisitesMet = function(skillId) {
   return prerequisites.every(prereq => prereq.completed);
 };
 
-// Mark a skill as complete
-window.markSkillComplete = function(skillId) {
-  // Find the skill in the data
-  let skill = null;
-  let skillPath = null;
-  
-  // Check if it's a subskill
-  for (const category of window.skillsData.categories) {
-    for (const subcategory of category.subcategories || []) {
-      for (const s of subcategory.skills || []) {
-        if (s.subskills) {
-          const subskillIndex = s.subskills.findIndex(ss => ss.id === skillId);
-          if (subskillIndex !== -1) {
-            skill = s.subskills[subskillIndex];
-            skillPath = {
-              category,
-              subcategory,
-              skill: s,
-              subskillIndex
-            };
-            break;
-          }
-        }
-        if (s.id === skillId) {
-          skill = s;
-          skillPath = {
-            category,
-            subcategory,
-            skillIndex: subcategory.skills.indexOf(s)
-          };
-          break;
-        }
-      }
-      if (skill) break;
-      
-      if (subcategory.id === skillId) {
-        skill = subcategory;
-        skillPath = {
-          category,
-          subcategoryIndex: category.subcategories.indexOf(subcategory)
-        };
-        break;
-      }
-    }
-    if (skill) break;
-  }
-  
-  if (!skill) return;
-  
-  // Check if prerequisites are met
-  if (!checkPrerequisitesMet(skillId)) {
-    alert('You must complete all prerequisites first!');
-    return;
-  }
-  
-  // Mark as completed
-  skill.completed = true;
-  skill.completedOn = new Date().toISOString();
-  
-  // Add to user's completed skills
-  if (!window.skillsData.user.completedSkills.some(s => s.id === skillId)) {
-    window.skillsData.user.completedSkills.push({
-      id: skillId,
-      name: skill.name,
-      category: getSkillCategoryPath(skillPath),
-      completedOn: skill.completedOn
-    });
-  }
-  
-  // Update progress
-  updateProgress(skillPath);
-  
-  // Save data
-  saveData();
-  
-  // Update UI
-  updateUI();
-};
-
-// Mark a skill as incomplete
-window.markSkillIncomplete = function(skillId) {
-  // Find the skill in the data
-  let skill = null;
-  let skillPath = null;
-  
-  // Check if it's a subskill
-  for (const category of window.skillsData.categories) {
-    for (const subcategory of category.subcategories || []) {
-      for (const s of subcategory.skills || []) {
-        if (s.subskills) {
-          const subskillIndex = s.subskills.findIndex(ss => ss.id === skillId);
-          if (subskillIndex !== -1) {
-            skill = s.subskills[subskillIndex];
-            skillPath = {
-              category,
-              subcategory,
-              skill: s,
-              subskillIndex
-            };
-            break;
-          }
-        }
-        if (s.id === skillId) {
-          skill = s;
-          skillPath = {
-            category,
-            subcategory,
-            skillIndex: subcategory.skills.indexOf(s)
-          };
-          break;
-        }
-      }
-      if (skill) break;
-      
-      if (subcategory.id === skillId) {
-        skill = subcategory;
-        skillPath = {
-          category,
-          subcategoryIndex: category.subcategories.indexOf(subcategory)
-        };
-        break;
-      }
-    }
-    if (skill) break;
-  }
-  
-  if (!skill) return;
-  
-  // Check if any dependent skills are completed
-  const dependentSkills = getDependentSkills(skillId);
-  if (dependentSkills.some(s => s.completed)) {
-    alert('You must mark all dependent skills as incomplete first!');
-    return;
-  }
-  
-  // Mark as incomplete
-  skill.completed = false;
-  skill.completedOn = null;
-  
-  // Remove from user's completed skills
-  window.skillsData.user.completedSkills = window.skillsData.user.completedSkills.filter(s => s.id !== skillId);
-  
-  // Update progress
-  updateProgress(skillPath);
-  
-  // Save data
-  saveData();
-  
-  // Update UI
-  updateUI();
-};
-
-// Get dependent skills
-window.getDependentSkills = function(skillId) {
-  const dependentSkills = [];
-  
-  // Check all skills for prerequisites that match the given skillId
-  for (const category of window.skillsData.categories) {
-    for (const subcategory of category.subcategories || []) {
-      for (const skill of subcategory.skills || []) {
-        if (skill.prerequisites && skill.prerequisites.includes(skillId)) {
-          dependentSkills.push(skill);
-        }
-        
-        if (skill.subskills) {
-          for (const subskill of skill.subskills) {
-            if (subskill.prerequisites && subskill.prerequisites.includes(skillId)) {
-              dependentSkills.push(subskill);
-            }
-          }
-        }
-      }
-      
-      if (subcategory.prerequisites && subcategory.prerequisites.includes(skillId)) {
-        dependentSkills.push(subcategory);
-      }
-    }
-  }
-  
-  return dependentSkills;
-};
-
-// Get skill category path
-window.getSkillCategoryPath = function(skillPath) {
-  if (!skillPath) return '';
-  
-  if (skillPath.subskillIndex !== undefined) {
-    return `${skillPath.category.name} > ${skillPath.subcategory.name} > ${skillPath.skill.name}`;
-  } else if (skillPath.skillIndex !== undefined) {
-    return `${skillPath.category.name} > ${skillPath.subcategory.name}`;
-  } else if (skillPath.subcategoryIndex !== undefined) {
-    return skillPath.category.name;
-  }
-  
-  return '';
-};
-
-// Update progress
-window.updateProgress = function(skillPath) {
-  if (!skillPath) return;
-  
-  // Update skill progress if it has subskills
-  if (skillPath.skill && skillPath.skill.subskills) {
-    const totalSubskills = skillPath.skill.subskills.length;
-    const completedSubskills = skillPath.skill.subskills.filter(s => s.completed).length;
-    skillPath.skill.progress = totalSubskills > 0 ? Math.round((completedSubskills / totalSubskills) * 100) : 0;
-  }
-  
-  // Update subcategory progress
-  if (skillPath.subcategory && skillPath.subcategory.skills) {
-    const totalSkills = skillPath.subcategory.skills.reduce((total, skill) => {
-      return total + (skill.subskills ? skill.subskills.length : 1);
-    }, 0);
-    
-    let completedSkills = 0;
-    for (const skill of skillPath.subcategory.skills) {
-      if (skill.subskills) {
-        completedSkills += skill.subskills.filter(s => s.completed).length;
-      } else if (skill.completed) {
-        completedSkills++;
-      }
-    }
-    
-    skillPath.subcategory.progress = totalSkills > 0 ? Math.round((completedSkills / totalSkills) * 100) : 0;
-  }
-  
-  // Update category progress
-  if (skillPath.category && skillPath.category.subcategories) {
-    let totalSkills = 0;
-    let completedSkills = 0;
-    
-    for (const subcategory of skillPath.category.subcategories) {
-      for (const skill of subcategory.skills || []) {
-        if (skill.subskills) {
-          totalSkills += skill.subskills.length;
-          completedSkills += skill.subskills.filter(s => s.completed).length;
-        } else {
-          totalSkills++;
-          if (skill.completed) completedSkills++;
-        }
-      }
-    }
-    
-    skillPath.category.progress = totalSkills > 0 ? Math.round((completedSkills / totalSkills) * 100) : 0;
-  }
-  
-  // Update overall progress
-  updateOverallProgress();
-};
-
-// Update overall progress
-window.updateOverallProgress = function() {
-  let totalSkills = 0;
-  let completedSkills = 0;
-  
-  for (const category of window.skillsData.categories) {
-    for (const subcategory of category.subcategories || []) {
-      for (const skill of subcategory.skills || []) {
-        if (skill.subskills) {
-          totalSkills += skill.subskills.length;
-          completedSkills += skill.subskills.filter(s => s.completed).length;
-        } else {
-          totalSkills++;
-          if (skill.completed) completedSkills++;
-        }
-      }
-    }
-  }
-  
-  window.skillsData.user.overallProgress = totalSkills > 0 ? Math.round((completedSkills / totalSkills) * 100) : 0;
-};
-
 // Update all progress indicators
 window.updateAllProgress = function() {
-  // Update overall progress
-  updateOverallProgress();
+  console.log("Updating all progress indicators");
   
   // Update progress indicators in UI
   document.querySelectorAll('.progress-text').forEach(el => {
@@ -1127,20 +826,6 @@ window.updateAllProgress = function() {
   
   // Update charts
   updateCharts();
-};
-
-// Update UI
-window.updateUI = function() {
-  // Update galaxy visualization
-  createSkillNodes();
-  
-  // Update skill details panel if a skill is selected
-  if (window.selectedSkill) {
-    selectNode(window.selectedSkill);
-  }
-  
-  // Update progress indicators
-  updateAllProgress();
 };
 
 // Update completed skills list
@@ -1183,13 +868,9 @@ window.updateCompletedSkillsList = function() {
     row.appendChild(dateCell);
     
     const actionsCell = document.createElement('td');
-    const removeButton = document.createElement('button');
-    removeButton.className = 'btn secondary small';
-    removeButton.textContent = 'Remove';
-    removeButton.addEventListener('click', function() {
-      markSkillIncomplete(skill.id);
-    });
-    actionsCell.appendChild(removeButton);
+    actionsCell.textContent = "Read-only mode";
+    actionsCell.style.color = "#999";
+    actionsCell.style.fontStyle = "italic";
     row.appendChild(actionsCell);
     
     completedSkillsList.appendChild(row);
@@ -1306,9 +987,11 @@ window.initCharts = function() {
 // Update charts
 window.updateCharts = function() {
   // Destroy existing charts
-  Chart.helpers.each(Chart.instances, function(instance) {
-    instance.destroy();
-  });
+  if (typeof Chart !== 'undefined' && Chart.helpers) {
+    Chart.helpers.each(Chart.instances, function(instance) {
+      instance.destroy();
+    });
+  }
   
   // Reinitialize charts
   initCharts();
@@ -1355,9 +1038,4 @@ window.getMonthName = function(monthIndex) {
   ];
   
   return months[monthIndex];
-};
-
-// Save data to localStorage
-window.saveData = function() {
-  localStorage.setItem('cyberskills_data', JSON.stringify(window.skillsData));
 };
