@@ -1,4 +1,4 @@
-{
+const skillsData = {
   "user": {
     "name": "Basil",
     "startDate": "2025-04-11",
