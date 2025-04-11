@@ -1,4 +1,5 @@
-const skillsData = {
+// Cybersecurity Skills Data
+window.skillsData = {
   "user": {
     "name": "Basil",
     "startDate": "2025-04-11",
@@ -469,4 +470,4 @@ const skillsData = {
       ]
     }
   ]
-}
+};
