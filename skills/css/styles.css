@@ -250,10 +250,6 @@ main {
 }
 
 .view {
-    display: none;
-}
-
-.view.active {
     display: block;
 }
 
@@ -544,10 +540,10 @@ footer {
 .zoom-controls button {
     background-color: rgba(22, 32, 71, 0.5);
     border: 1px solid var(--card-border);
-    border-radius: 6px;
-    color: var(--text-secondary);
-    width: 36px;
-    height: 36px;
+    border-radius: 4px;
+    color: var(--text-primary);
+    width: 30px;
+    height: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -556,35 +552,42 @@ footer {
 
 .zoom-controls button:hover {
     background-color: var(--space-light-blue);
-    color: var(--text-primary);
 }
 
 .galaxy-container {
     position: relative;
+    width: 100%;
     height: 70vh;
     background-color: var(--space-black);
     border-radius: 8px;
     overflow: hidden;
-    border: 1px solid var(--card-border);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 #galaxy-canvas {
     width: 100%;
     height: 100%;
+    cursor: grab;
+}
+
+#galaxy-canvas:active {
+    cursor: grabbing;
 }
 
 .tooltip {
     position: absolute;
     background-color: var(--tooltip-bg);
-    border: 1px solid var(--space-accent);
-    border-radius: 6px;
+    border: 1px solid var(--card-border);
+    border-radius: 4px;
     padding: var(--space-sm) var(--space-md);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     pointer-events: none;
     z-index: 10;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(10px);
     max-width: 200px;
+}
+
+.tooltip.hidden {
+    display: none;
 }
 
 .tooltip-title {
@@ -597,23 +600,18 @@ footer {
     color: var(--text-tertiary);
 }
 
-.hidden {
-    display: none;
-}
-
 .skill-details-panel {
     position: absolute;
     top: 0;
     right: 0;
-    width: 350px;
+    width: 300px;
     height: 100%;
     background-color: var(--panel-bg);
     border-left: 1px solid var(--card-border);
     transform: translateX(100%);
     transition: transform var(--transition-medium);
-    z-index: 5;
-    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(10px);
+    z-index: 20;
+    overflow-y: auto;
 }
 
 .skill-details-panel.active {
@@ -630,6 +628,7 @@ footer {
 
 .panel-header h3 {
     margin-bottom: 0;
+    font-size: 1.1rem;
 }
 
 .close-panel {
@@ -647,113 +646,108 @@ footer {
 
 .panel-content {
     padding: var(--space-md);
-    overflow-y: auto;
-    height: calc(100% - 60px);
 }
 
 .skill-header {
     margin-bottom: var(--space-md);
 }
 
+.skill-header h4 {
+    font-size: 1.2rem;
+    margin-bottom: var(--space-xs);
+}
+
 .skill-id {
-    display: inline-block;
-    background-color: rgba(82, 113, 255, 0.2);
-    color: var(--space-accent);
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-size: 0.8rem;
     font-family: var(--font-mono);
-    margin-top: var(--space-xs);
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
 }
 
 .skill-description {
-    margin-bottom: var(--space-lg);
+    margin-bottom: var(--space-md);
     color: var(--text-secondary);
-    line-height: 1.6;
+    font-size: 0.9rem;
 }
 
 .skill-status {
     display: flex;
     align-items: center;
-    margin-bottom: var(--space-lg);
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
 }
 
 .status-label {
     font-weight: 500;
-    margin-right: var(--space-sm);
 }
 
 .status-value {
-    padding: 2px 8px;
+    padding: var(--space-xs) var(--space-sm);
     border-radius: 4px;
-    font-size: 0.9rem;
-    background-color: rgba(158, 158, 158, 0.2);
-    color: var(--locked-color);
+    font-size: 0.8rem;
+    background-color: var(--locked-color);
 }
 
 .status-value.completed {
-    background-color: rgba(76, 175, 80, 0.2);
-    color: var(--completed-color);
+    background-color: var(--completed-color);
 }
 
 .status-value.in-progress {
-    background-color: rgba(255, 152, 0, 0.2);
-    color: var(--in-progress-color);
+    background-color: var(--in-progress-color);
+}
+
+.skill-prerequisites {
+    margin-bottom: var(--space-md);
 }
 
 .skill-prerequisites h5 {
-    font-size: 1rem;
+    font-size: 0.9rem;
     margin-bottom: var(--space-sm);
 }
 
 .skill-prerequisites ul {
     list-style-type: none;
-    margin-bottom: var(--space-lg);
+    padding-left: var(--space-md);
 }
 
 .skill-prerequisites li {
-    padding: var(--space-xs) 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    display: flex;
-    align-items: center;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-xs);
+    position: relative;
 }
 
-.skill-prerequisites li:last-child {
-    border-bottom: none;
-}
-
-.skill-prerequisites li i {
-    margin-right: var(--space-xs);
-    font-size: 0.8rem;
+.skill-prerequisites li::before {
+    content: '•';
+    position: absolute;
+    left: -15px;
+    color: var(--space-accent);
 }
 
 .skill-prerequisites li.completed {
-    color: var(--completed-color);
-}
-
-.skill-prerequisites li.not-completed {
+    text-decoration: line-through;
     color: var(--text-tertiary);
 }
 
 .skill-actions {
     display: flex;
-    flex-direction: column;
     gap: var(--space-sm);
 }
 
 .btn {
     padding: var(--space-sm) var(--space-md);
-    border-radius: 6px;
-    font-size: 1rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
     font-weight: 500;
     cursor: pointer;
     transition: all var(--transition-fast);
-    border: none;
+    flex: 1;
+    text-align: center;
 }
 
 .btn.primary {
     background-color: var(--space-accent);
     color: var(--text-primary);
+    border: none;
 }
 
 .btn.primary:hover {
@@ -762,12 +756,12 @@ footer {
 
 .btn.secondary {
     background-color: transparent;
+    color: var(--text-secondary);
     border: 1px solid var(--text-tertiary);
-    color: var(--text-tertiary);
 }
 
 .btn.secondary:hover {
-    border-color: var(--text-primary);
+    background-color: rgba(255, 255, 255, 0.05);
     color: var(--text-primary);
 }
 
@@ -780,31 +774,34 @@ footer {
     font-size: 2rem;
     margin-bottom: var(--space-lg);
     text-align: center;
-    background: linear-gradient(to right, #5271ff, #5effb8);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
 }
 
 .progress-summary {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: var(--space-lg);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .summary-item {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
 }
 
 .summary-label {
-    display: block;
+    font-size: 0.9rem;
     color: var(--text-secondary);
-    margin-bottom: var(--space-sm);
-    font-size: 1.1rem;
 }
 
 .summary-value {
-    font-size: 1.5rem;
-    font-weight: 600;
+    font-size: 1.2rem;
+    font-weight: 500;
 }
 
 .progress-charts {
@@ -820,11 +817,10 @@ footer {
     border-radius: 8px;
     padding: var(--space-lg);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(10px);
 }
 
 .chart-container h3 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin-bottom: var(--space-lg);
     text-align: center;
 }
@@ -835,11 +831,10 @@ footer {
     border-radius: 8px;
     padding: var(--space-lg);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(10px);
 }
 
 .completed-skills h3 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin-bottom: var(--space-lg);
 }
 
@@ -853,19 +848,35 @@ footer {
 }
 
 .skills-table th, .skills-table td {
-    padding: var(--space-sm);
+    padding: var(--space-sm) var(--space-md);
     text-align: left;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid var(--card-border);
 }
 
 .skills-table th {
-    color: var(--text-secondary);
     font-weight: 500;
+    color: var(--text-secondary);
     font-size: 0.9rem;
 }
 
-.skills-table tr:hover {
-    background-color: rgba(255, 255, 255, 0.03);
+.skills-table td {
+    font-size: 0.9rem;
+}
+
+.skills-table tr:hover td {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.skills-table .action-btn {
+    background-color: transparent;
+    border: none;
+    color: var(--space-accent);
+    cursor: pointer;
+    transition: color var(--transition-fast);
+}
+
+.skills-table .action-btn:hover {
+    color: var(--space-accent-hover);
 }
 
 .skills-table .empty-state {
@@ -874,21 +885,24 @@ footer {
 
 /* ===== MODAL STYLES ===== */
 .modal {
-    display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
-    z-index: 1000;
-    backdrop-filter: blur(5px);
-}
-
-.modal.active {
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-medium);
+}
+
+.modal.active {
+    opacity: 1;
+    visibility: visible;
 }
 
 .modal-content {
@@ -896,10 +910,16 @@ footer {
     border: 1px solid var(--card-border);
     border-radius: 8px;
     width: 90%;
-    max-width: 600px;
+    max-width: 500px;
     max-height: 90vh;
     overflow-y: auto;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transform: translateY(-20px);
+    transition: transform var(--transition-medium);
+}
+
+.modal.active .modal-content {
+    transform: translateY(0);
 }
 
 .modal-header {
@@ -912,6 +932,7 @@ footer {
 
 .modal-header h3 {
     margin-bottom: 0;
+    font-size: 1.2rem;
 }
 
 .close-modal {
@@ -932,54 +953,51 @@ footer {
 }
 
 .modal-skill-details {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-md);
-    margin: var(--space-lg) 0;
-    background-color: rgba(22, 32, 71, 0.3);
-    border-radius: 6px;
-    padding: var(--space-md);
+    margin-top: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
 }
 
 .detail-label {
-    display: block;
-    color: var(--text-tertiary);
-    font-size: 0.9rem;
-    margin-bottom: var(--space-xs);
+    font-weight: 500;
+    width: 100px;
+    flex-shrink: 0;
 }
 
-.modal-skill-prerequisites, .modal-skill-related {
-    margin-top: var(--space-lg);
+.modal-skill-prerequisites {
+    margin-top: var(--space-md);
 }
 
-.modal-skill-prerequisites h4, .modal-skill-related h4 {
-    font-size: 1.1rem;
+.modal-skill-prerequisites h4 {
+    font-size: 1rem;
     margin-bottom: var(--space-sm);
 }
 
-.modal-skill-prerequisites ul, .modal-skill-related ul {
-    list-style-type: none;
-}
-
-.modal-skill-prerequisites li, .modal-skill-related li {
-    padding: var(--space-xs) 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.modal-skill-prerequisites li:last-child, .modal-skill-related li:last-child {
-    border-bottom: none;
-}
-
-.modal-footer {
+.modal-skill-actions {
     display: flex;
-    justify-content: flex-end;
-    gap: var(--space-md);
-    padding: var(--space-md) var(--space-lg);
-    border-top: 1px solid var(--card-border);
+    gap: var(--space-sm);
+    margin-top: var(--space-lg);
 }
 
 /* ===== RESPONSIVE STYLES ===== */
-@media (max-width: 1200px) {
+@media (max-width: 1024px) {
+    .dashboard-stats {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-lg);
+    }
+    
+    .stat-card {
+        width: 100%;
+        max-width: 400px;
+    }
+    
     .dashboard-sections {
         grid-template-columns: 1fr;
     }
@@ -989,34 +1007,15 @@ footer {
     }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
     header {
         flex-direction: column;
         gap: var(--space-md);
         padding: var(--space-md);
     }
     
-    .dashboard-stats {
-        flex-direction: column;
-        gap: var(--space-md);
-    }
-    
-    .stat-card {
-        width: 100%;
-    }
-    
-    .category-grid {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    }
-    
-    .skill-details-panel {
-        width: 100%;
-    }
-}
-
-@media (max-width: 600px) {
     nav ul {
-        gap: var(--space-sm);
+        gap: var(--space-md);
     }
     
     .galaxy-controls {
@@ -1033,7 +1032,34 @@ footer {
         justify-content: space-between;
     }
     
-    .modal-skill-details {
+    .skill-details-panel {
+        width: 100%;
+    }
+    
+    .progress-summary {
+        flex-direction: column;
+        gap: var(--space-lg);
+    }
+}
+
+@media (max-width: 480px) {
+    nav ul {
+        gap: var(--space-sm);
+    }
+    
+    .logo h1 {
+        font-size: 1.2rem;
+    }
+    
+    main {
+        padding: var(--space-md);
+    }
+    
+    .dashboard-header h2 {
+        font-size: 1.8rem;
+    }
+    
+    .category-grid {
         grid-template-columns: 1fr;
     }
 }
