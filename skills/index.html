@@ -22,9 +22,9 @@
         </div>
         <nav>
             <ul>
-                <li><a href="#" class="active" id="dashboard-link">Dashboard</a></li>
-                <li><a href="#" id="galaxy-link">Skill Galaxy</a></li>
-                <li><a href="#" id="progress-link">Progress Tracker</a></li>
+                <li><a href="index.html" class="active" id="dashboard-link">Dashboard</a></li>
+                <li><a href="galaxy.html" id="galaxy-link">Skill Galaxy</a></li>
+                <li><a href="tracker.html" id="progress-link">Progress Tracker</a></li>
             </ul>
         </nav>
         <div class="user-profile">
@@ -39,7 +39,7 @@
 
     <main>
         <!-- Dashboard View -->
-        <section id="dashboard" class="view active">
+        <section id="dashboard" class="view">
             <div class="dashboard-header">
                 <h2>Your Cybersecurity Journey</h2>
                 <p>Track your progress through the vast galaxy of cybersecurity skills</p>
@@ -191,129 +191,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- Galaxy View -->
-        <section id="galaxy" class="view">
-            <div class="galaxy-controls">
-                <div class="search-bar">
-                    <input type="text" placeholder="Search skills...">
-                    <button><i class="fas fa-search"></i></button>
-                </div>
-                <div class="filter-controls">
-                    <select id="category-filter">
-                        <option value="all">All Categories</option>
-                        <option value="1">Pre-Cybersecurity Fundamentals</option>
-                        <option value="2">Security Fundamentals</option>
-                        <option value="3">Defensive Security</option>
-                        <option value="4">Offensive Security</option>
-                        <option value="5">Security Architecture</option>
-                        <option value="6">Governance, Risk, and Compliance</option>
-                        <option value="7">Specialized Security Domains</option>
-                        <option value="8">Advanced Security Topics</option>
-                        <option value="9">Security Career Development</option>
-                    </select>
-                    <div class="zoom-controls">
-                        <button id="zoom-in"><i class="fas fa-plus"></i></button>
-                        <button id="zoom-out"><i class="fas fa-minus"></i></button>
-                        <button id="reset-view"><i class="fas fa-sync-alt"></i></button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="galaxy-container">
-                <canvas id="galaxy-canvas"></canvas>
-                <div id="skill-tooltip" class="tooltip hidden">
-                    <h4 class="tooltip-title">Skill Name</h4>
-                    <p class="tooltip-category">Category</p>
-                </div>
-            </div>
-            
-            <div class="skill-details-panel">
-                <div class="panel-header">
-                    <h3>Skill Details</h3>
-                    <button class="close-panel"><i class="fas fa-times"></i></button>
-                </div>
-                <div class="panel-content">
-                    <div class="skill-header">
-                        <h4 id="skill-name">Select a skill</h4>
-                        <span id="skill-id" class="skill-id"></span>
-                    </div>
-                    <div class="skill-description">
-                        <p id="skill-description">Click on a skill in the galaxy to view its details.</p>
-                    </div>
-                    <div class="skill-status">
-                        <span class="status-label">Status:</span>
-                        <span id="skill-status" class="status-value">Not Started</span>
-                    </div>
-                    <div class="skill-prerequisites">
-                        <h5>Prerequisites</h5>
-                        <ul id="prerequisites-list">
-                            <li class="empty-state">No prerequisites</li>
-                        </ul>
-                    </div>
-                    <div class="skill-actions">
-                        <button id="mark-complete" class="btn primary">Mark as Complete</button>
-                        <button id="mark-incomplete" class="btn secondary">Mark as Incomplete</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Progress Tracker View -->
-        <section id="progress-tracker" class="view">
-            <div class="progress-header">
-                <h2>Your Progress Tracker</h2>
-                <div class="progress-summary">
-                    <div class="summary-item">
-                        <span class="summary-label">Overall Completion</span>
-                        <div class="progress-circle large">
-                            <span class="progress-text">0%</span>
-                        </div>
-                    </div>
-                    <div class="summary-item">
-                        <span class="summary-label">Skills Completed</span>
-                        <span class="summary-value">0/500+</span>
-                    </div>
-                    <div class="summary-item">
-                        <span class="summary-label">Time Tracking</span>
-                        <span class="summary-value">Journey started <span id="journey-start-date">today</span></span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="progress-charts">
-                <div class="chart-container">
-                    <h3>Progress by Category</h3>
-                    <canvas id="category-progress-chart"></canvas>
-                </div>
-                <div class="chart-container">
-                    <h3>Skill Acquisition Timeline</h3>
-                    <canvas id="timeline-chart"></canvas>
-                </div>
-            </div>
-            
-            <div class="completed-skills">
-                <h3>Completed Skills</h3>
-                <div class="skills-table-container">
-                    <table class="skills-table">
-                        <thead>
-                            <tr>
-                                <th>Skill ID</th>
-                                <th>Skill Name</th>
-                                <th>Category</th>
-                                <th>Completed On</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="completed-skills-list">
-                            <tr class="empty-state">
-                                <td colspan="5">No skills completed yet</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
     </main>
 
     <div id="skill-modal" class="modal">
@@ -344,29 +221,15 @@
                         <li class="empty-state">No prerequisites</li>
                     </ul>
                 </div>
-                <div class="modal-skill-related">
-                    <h4>Related Skills</h4>
-                    <ul id="modal-related-list">
-                        <li class="empty-state">No related skills</li>
-                    </ul>
+                <div class="modal-skill-actions">
+                    <button id="modal-mark-complete" class="btn primary">Mark as Complete</button>
+                    <button id="modal-mark-incomplete" class="btn secondary">Mark as Incomplete</button>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button id="modal-mark-complete" class="btn primary">Mark as Complete</button>
-                <button id="modal-mark-incomplete" class="btn secondary">Mark as Incomplete</button>
             </div>
         </div>
     </div>
 
-    <footer>
-        <p>&copy; 2025 Cybersecurity Skills Galaxy | Basil's Journey</p>
-    </footer>
-
-    <!-- JavaScript Libraries -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
-    
-    <!-- Application Scripts -->
-    <script src="js/data.js"></script>
-    <script src="js/app.js"></script>
+    <script src="data.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
