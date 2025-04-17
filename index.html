@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Basil AlShuakili - Cybersecurity Professional</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -15,7 +15,7 @@
             </div>
             <nav>
                 <ul class="menu">
-                    <li><a href="index.html" class="active">About Basil</a></li>
+                    <li><a href="#" class="active" data-section="about">About Basil</a></li>
                     <li><a href="learn.html">Learn with Basil</a></li>
                 </ul>
                 <div class="hamburger">
@@ -27,63 +27,268 @@
         </div>
     </header>
 
-    <div class="content-area" style="margin-left: 0; padding-top: 90px;">
-        <div class="content-section active">
-            <h1>About Basil AlShuakili</h1>
-            
-            <div class="content-intro">
-                <p>Cybersecurity professional with expertise in information security, penetration testing, and security operations. Bachelor of Computer Science with cybersecurity and computing infrastructure specialization from Sultan Qaboos University.</p>
-            </div>
-            
-            <div class="content-section-inner">
-                <h2>Professional Experience</h2>
-                
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Position</th>
-                                <th>Company</th>
-                                <th>Duration</th>
-                                <th>Responsibilities</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>SOC Analyst L1</td>
-                                <td>Omantel (Insight Information Security)</td>
-                                <td>Current</td>
-                                <td>PCAP analysis, email analysis, endpoint analysis, security alerts investigation, malware analysis, detection rules, threat intelligence, DOS attack reports</td>
-                            </tr>
-                            <tr>
-                                <td>Information Security Consultant</td>
-                                <td>Dhofar Insurance Company</td>
-                                <td>May 2023 - Sep 2024</td>
-                                <td>Mobile Android application penetration testing, vulnerability assessment, web application penetration testing, network penetration testing, Active Directory work</td>
-                            </tr>
-                        </tbody>
-                    </table>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Basil AlShuakili</h1>
+                    <h2>Cybersecurity Professional</h2>
+                    <p>Specialized in Penetration Testing, Security Analysis, and Threat Intelligence</p>
+                    <div class="cta-buttons">
+                        <a href="#experience" class="btn primary">View Experience</a>
+                        <a href="#skills" class="btn secondary">My Skills</a>
+                    </div>
                 </div>
-                
-                <h2>Education</h2>
-                <p>Bachelor of Computer Science with cybersecurity and computing infrastructure specialization from Sultan Qaboos University (2019-2025)</p>
-                
-                <h2>Cybersecurity Academy</h2>
-                <p>I've created a comprehensive cybersecurity learning platform to share my knowledge and help others learn about cybersecurity. The platform covers everything from pre-cybersecurity fundamentals to advanced topics and emerging technologies.</p>
-                
-                <div class="cta-container">
-                    <a href="learn.html" class="btn primary">Explore the Cybersecurity Academy</a>
+                <div class="hero-image">
+                    <div class="profile-image">
+                        <img src="images/profile.jpg" alt="Basil AlShuakili">
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+
+    <section id="about" class="about section-active">
+        <div class="container">
+            <div class="section-header">
+                <h2>About Me</h2>
+                <div class="underline"></div>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I am a cybersecurity professional with expertise in penetration testing, security analysis, and threat intelligence. With a Bachelor's degree in Computer Science specializing in Cybersecurity and Computing Infrastructure from Sultan Qaboos University, I bring a strong foundation in security principles and practical experience in identifying and mitigating security threats.</p>
+                    <p>My journey in cybersecurity began during my university years and has evolved through hands-on experience in various security domains including web application security, mobile application security, network penetration testing, and active directory security.</p>
+                    <p>Currently working as a SOC Analyst L1 at Omantel through Insight Information Security, I am passionate about continuously expanding my knowledge and skills in the ever-evolving field of cybersecurity.</p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-title">Years in Tech</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">2+</div>
+                        <div class="stat-title">Years in Security</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">10+</div>
+                        <div class="stat-title">Security Projects</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="education">
+        <div class="container">
+            <div class="section-header">
+                <h2>Education</h2>
+                <div class="underline"></div>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Bachelor of Computer Science</h3>
+                        <h4>Sultan Qaboos University</h4>
+                        <p class="timeline-date">2019 - 2025</p>
+                        <p>Specialized in Cybersecurity and Computing Infrastructure</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Penetration Testing Job Role Path</h3>
+                        <h4>Hack The Box Academy</h4>
+                        <p>Comprehensive training in penetration testing methodologies and techniques</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="experience">
+        <div class="container">
+            <div class="section-header">
+                <h2>Professional Experience</h2>
+                <div class="underline"></div>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>SOC Analyst L1</h3>
+                        <h4>Omantel (via Insight Information Security)</h4>
+                        <p class="timeline-date">Sep 2024 - Present</p>
+                        <ul>
+                            <li>Perform PCAP analysis, email analysis, and endpoint analysis</li>
+                            <li>Investigate security alerts and incidents</li>
+                            <li>Conduct malware analysis and develop detection rules</li>
+                            <li>Work with threat intelligence and DOS attack reports</li>
+                            <li>Apply and enhance skills through Immersive Labs platform</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Information Security Consultant</h3>
+                        <h4>Dhofar Insurance Company</h4>
+                        <p class="timeline-date">May 2023 - Sep 2024</p>
+                        <ul>
+                            <li>Conducted mobile Android application penetration testing and delivered comprehensive reports</li>
+                            <li>Performed vulnerability assessments for information systems</li>
+                            <li>Executed penetration testing for web applications</li>
+                            <li>Conducted network penetration testing</li>
+                            <li>Worked with Active Directory security</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2>Technical Skills</h2>
+                <div class="underline"></div>
+            </div>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Penetration Testing</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span>Web Application Security</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Mobile Application Security</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Network Penetration Testing</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Active Directory Security</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Security Analysis</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span>PCAP Analysis</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Email Analysis</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Endpoint Analysis</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Malware Analysis</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Other Security Skills</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span>Threat Intelligence</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Detection Rules</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>DOS Attack Analysis</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Security Reporting</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Contact Me</h2>
+                <div class="underline"></div>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>basil.alshuakili@example.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+968 1234 5678</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Muscat, Oman</span>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Basil AlShuakili. All rights reserved.</p>
+            <p>&copy; 2025 Basil AlShuakili. All Rights Reserved.</p>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
