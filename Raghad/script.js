@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const raghadTextElement = raghadDialogueBox.querySelector(".dialogue-text");
 
     let currentDialogueIndex = 0;
-    const wordRevealSpeed = 120; // Milliseconds per word
+    const wordRevealSpeed = 200; // Milliseconds per word
     const pauseBetweenDialogues = 2500; // Milliseconds pause after a line is complete
     const pauseBeforeNextSpeaker = 1000; // Milliseconds pause before next speaker starts
 
