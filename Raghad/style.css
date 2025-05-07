@@ -27,13 +27,16 @@ body, html {
     border: 1px solid rgba(100, 120, 170, 0.9); 
     border-radius: 15px; 
     padding: 15px 20px;
-    max-width: 280px; 
+    max-width: 260px; 
+    max-height: 150px; 
+    overflow-y: auto; /* Enable vertical scroll if content overflows */
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     font-size: 1em; 
-    line-height: 1.5;
+    line-height: 1.4;
     z-index: 5;
-    opacity: 0; 
-    transition: opacity 0.5s ease-in-out;
+    opacity: 0; /* Hidden by default, JS controls visibility */
+    transition: opacity 0.5s ease-in-out, top 0.3s ease-in-out;
+    box-sizing: border-box; /* Ensures padding and border don't add to max-width/height */
 }
 
 .dialogue-box p {
@@ -56,8 +59,8 @@ body, html {
 }
 
 .basil-dialogue {
-    top: 35%; 
-    left: 20%; 
+    top: 25%; 
+    left: 18%; 
     transform: translate(0, 0);
 }
 
@@ -70,8 +73,8 @@ body, html {
 }
 
 .raghad-dialogue {
-    top: 35%; 
-    right: 20%; 
+    top: 25%; 
+    right: 18%; 
     transform: translate(0, 0);
 }
 
@@ -84,56 +87,55 @@ body, html {
 }
 
 /* Responsive adjustments */
-@media (max-width: 768px) { /* For tablets and smaller */
+@media (max-width: 768px) { /* For tablets */
     .dialogue-box {
-        max-width: 200px; /* Smaller boxes */
-        font-size: 0.9em; /* Smaller font */
-        padding: 10px 15px;
+        max-width: 220px; /* Slightly increased */
+        font-size: 0.9em; 
+        padding: 12px 18px; /* Adjusted padding */
+        max-height: 140px; /* Increased max-height */
     }
 
     .basil-dialogue {
-        left: 5%; /* Closer to edge */
-        top: 30%;
+        left: 5%; 
+        top: 22%; /* Adjusted slightly */
     }
 
     .raghad-dialogue {
-        right: 5%; /* Closer to edge */
-        top: 30%;
+        right: 5%; 
+        top: 22%; /* Adjusted slightly */
     }
 
     .basil-dialogue::after, .raghad-dialogue::after {
-        border-width: 10px 10px 0 10px; /* Smaller tail */
+        border-width: 10px 10px 0 10px; 
         bottom: -8px;
     }
 }
 
 @media (max-width: 480px) { /* For mobile phones */
     .dialogue-box {
-        max-width: 90%; /* Wider to use more screen width */
-        font-size: 0.8em;
-        padding: 8px 12px;
-        /* Stack them or make them appear one at a time more centrally */
+        max-width: 85%; /* Adjusted */
+        font-size: 0.9em; /* Increased for better readability */
+        padding: 10px 15px; 
+        max-height: 120px; /* Increased max-height */
     }
 
     .basil-dialogue {
         left: 50%;
-        top: 25%; /* Higher up */
-        transform: translateX(-50%); /* Center it */
-        width: 80%;
+        top: 18%; /* Adjusted higher */
+        transform: translateX(-50%); 
+        width: 85%;
     }
 
     .raghad-dialogue {
         left: 50%;
-        top: 25%; /* Higher up, will alternate with Basil */
-        transform: translateX(-50%); /* Center it */
-        width: 80%;
+        top: 18%; 
+        transform: translateX(-50%); 
+        width: 85%;
     }
 
-    /* Adjust tails for centered boxes on mobile */
     .basil-dialogue::after, .raghad-dialogue::after {
         left: 50%; 
         transform: translateX(-50%);
-        /* Tail might look better at top if box is very wide */
     }
 }
 

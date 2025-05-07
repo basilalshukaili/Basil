@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const raghadTextElement = raghadDialogueBox.querySelector(".dialogue-text");
 
     let currentDialogueIndex = 0;
-    const wordRevealSpeed = 120; // Milliseconds per word, adjust for "a little slow"
+    const wordRevealSpeed = 120; // Milliseconds per word
     const pauseBetweenDialogues = 2500; // Milliseconds pause after a line is complete
     const pauseBeforeNextSpeaker = 1000; // Milliseconds pause before next speaker starts
 
@@ -40,12 +40,17 @@ document.addEventListener("DOMContentLoaded", () => {
         function addWord() {
             if (wordIndex < words.length) {
                 const span = document.createElement("span");
-                span.textContent = words[wordIndex] + (wordIndex < words.length - 1 ? " " : "");
+                span.textContent = words[wordIndex];
                 span.style.opacity = "0";
                 span.style.transform = "translateY(10px)";
-                span.style.display = "inline-block";
+                span.style.display = "inline-block"; // Ensures animation applies correctly
                 span.style.transition = "opacity 0.3s ease-out, transform 0.3s ease-out";
                 textElement.appendChild(span);
+
+                // Add a space after the word if it's not the last word
+                if (wordIndex < words.length - 1) {
+                    textElement.appendChild(document.createTextNode(" "));
+                }
                 
                 // Trigger reflow to apply initial styles before transition
                 void span.offsetWidth;
@@ -64,9 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function showNextDialogue() {
         if (currentDialogueIndex >= dialogue.length) {
-            // Optional: Add a concluding message or loop
             console.log("Dialogue finished.");
-            // Hide both boxes after dialogue ends
             setTimeout(() => {
                 basilDialogueBox.style.opacity = "0";
                 raghadDialogueBox.style.opacity = "0";
@@ -87,20 +90,17 @@ document.addEventListener("DOMContentLoaded", () => {
             inactiveBox = basilDialogueBox;
         }
 
-        // Hide inactive box, show active box
         inactiveBox.style.opacity = "0";
+        activeTextElement.innerHTML = ""; // Clear text before typing new line
         activeBox.style.opacity = "1";
         
         typeWordByWord(activeTextElement, currentEntry.text, () => {
             currentDialogueIndex++;
-            // Pause before the next speaker starts, or before hiding if it was the last line
             const nextSpeakerPause = (currentDialogueIndex < dialogue.length) ? pauseBeforeNextSpeaker : 0;
             setTimeout(showNextDialogue, nextSpeakerPause);
         });
     }
 
-    // Start the dialogue
-    // Initial short delay to ensure everything is loaded
     setTimeout(showNextDialogue, 500);
 });
 
