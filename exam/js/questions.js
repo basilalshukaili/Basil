@@ -403,15 +403,11 @@ const questions = [
     ],
     correctAnswer: ["b", "c", "e"], 
     explanation: "Technical security controls are implemented using technology and are often executed by computer systems. They are also referred to as logical controls. Examples include firewalls, intrusion detection systems, and encryption. Administrative controls involve policies and procedures, while physical controls protect tangible assets."
-  }
+  },
 
 
-];
 
-// To make questions accessible in other JS files if needed (e.g., app.js)
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = questions;
-}
+
 
 
 
