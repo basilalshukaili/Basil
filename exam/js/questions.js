@@ -1,7 +1,7 @@
 // questions.js
 // This file will be populated with more questions covering all domains and objectives as per the Security+ SY0-701 curriculum.
 
-const questions = [
+window.questionsData = [
   {
     id: 1,
     domain: "1.0 General Security Concepts",
@@ -489,4 +489,3 @@ const questions = [
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = questions;
 }
-
