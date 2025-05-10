@@ -3,32 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CompTIA Security+ Exam Demo</title>
+    <title>CompTIA Security+ Interactive Learning Demo</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div id="app-container">
         <!-- Welcome Screen (Initially Visible) -->
         <div id="welcome-screen">
-            <h1>CompTIA Security+ (SY0-701) Exam Demo</h1>
-            <p>Welcome to the CompTIA Security+ SY0-701 exam demonstration. This demo is designed to give you an idea of the types of questions you might encounter.</p>
+            <h1>CompTIA Security+ (SY0-701) Interactive Learning Demo</h1>
+            <p>Welcome to the CompTIA Security+ SY0-701 interactive learning demo. This demo is designed to help you learn by providing immediate feedback on questions.</p>
             <h2>Instructions:</h2>
             <ul>
-                <li>The full exam has a maximum of 90 questions and a 90-minute time limit. This demo will present a selection of questions.</li>
-                <li>You will encounter various question types, including multiple-choice (single and multiple answers), fill-in-the-blank, drag-and-drop, and performance-based questions (PBQs).</li>
-                <li>Read each question carefully before answering.</li>
-                <li>For PBQs, follow the on-screen instructions to interact with the simulated environment.</li>
+                <li>There is no time limit.</li>
+                <li>You will encounter various question types: multiple-choice, fill-in-the-blank, drag-and-drop, and performance-based questions (PBQs).</li>
+                <li>Read each question carefully, select/provide your answer, and then click "Submit Answer".</li>
+                <li>You will receive immediate feedback, including the correct answer and an explanation.</li>
+                <li>Click "Next Question" to proceed.</li>
             </ul>
-            <button id="start-exam-btn">Start Exam Demo</button>
+            <button id="start-demo-btn">Start Learning Demo</button>
         </div>
 
-        <!-- Exam Interface (Initially Hidden) -->
-        <div id="exam-interface" class="hidden">
-            <header id="exam-header">
-                <div id="exam-title">Security+ Demo</div>
+        <!-- Learning Interface (Initially Hidden) -->
+        <div id="learning-interface" class="hidden">
+            <header id="learning-header">
+                <div id="learning-title">Security+ Learning Demo</div>
                 <div id="question-counter">Question X of Y</div>
-                <div id="timer">Time Left: 90:00</div>
-                <button id="flag-review-btn">Flag for Review</button>
+                <!-- Timer Removed -->
+                <button id="flag-review-btn">Flag for Review</button> <!-- Kept for user's personal review tracking -->
             </header>
 
             <main id="question-area">
@@ -43,41 +44,37 @@
                 <div id="answer-options">
                     <!-- Answer options will be dynamically loaded here based on question type -->
                 </div>
-                 <div id="pbq-interaction-area">
+                <div id="pbq-interaction-area">
                     <!-- PBQ specific elements will be loaded here -->
+                </div>
+                
+                <div id="action-bar">
+                    <button id="submit-answer-btn">Submit Answer</button>
+                </div>
+
+                <div id="feedback-area" class="hidden">
+                    <h3 id="feedback-correctness"></h3>
+                    <p><strong>Your Answer:</strong> <span id="feedback-user-answer"></span></p>
+                    <p><strong>Correct Answer:</strong> <span id="feedback-correct-answer"></span></p>
+                    <p><strong>Explanation:</strong></p>
+                    <p id="feedback-explanation"></p>
                 </div>
             </main>
 
-            <footer id="exam-navigation">
-                <button id="prev-question-btn" disabled>Previous</button>
-                <button id="next-question-btn">Next</button>
-                <button id="review-all-btn">Review All / Finish</button>
+            <footer id="learning-navigation">
+                <button id="prev-question-btn" disabled>Previous Question</button>
+                <button id="next-question-btn" disabled>Next Question</button> <!-- Initially disabled until an answer is submitted -->
+                <button id="end-session-btn">End Session / View Summary</button> <!-- Optional summary -->
             </footer>
         </div>
 
-        <!-- Review Page (Initially Hidden) -->
-        <div id="review-page" class="hidden">
-            <h2>Review Your Answers</h2>
-            <div id="review-summary">
-                <!-- Summary of questions (answered, unanswered, flagged) will be loaded here -->
+        <!-- Session Summary Page (Initially Hidden) -->
+        <div id="summary-page" class="hidden">
+            <h2>Session Summary</h2>
+            <div id="summary-details">
+                <!-- Summary of questions (attempted, correct, flagged) will be loaded here -->
             </div>
-            <button id="submit-final-btn">Submit Final Answers</button>
-            <button id="back-to-exam-btn">Back to Exam</button>
-        </div>
-
-        <!-- Results Page (Initially Hidden) -->
-        <div id="results-page" class="hidden">
-            <h2>Exam Results</h2>
-            <div id="score-summary">
-                <p>Overall Score: <span id="overall-score">0</span>%</p>
-                <p>Status: <span id="pass-fail-status"></span></p>
-            </div>
-            <div id="domain-performance">
-                <h3>Performance by Domain:</h3>
-                <!-- Domain scores will be loaded here -->
-            </div>
-            <button id="review-answers-detailed-btn">Review Answers in Detail</button>
-            <button id="restart-exam-btn">Restart Exam Demo</button>
+            <button id="restart-demo-btn">Restart Demo</button>
         </div>
 
     </div>
