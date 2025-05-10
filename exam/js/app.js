@@ -1,6 +1,3 @@
-// app.js - Main application logic for Security+ Interactive Learning Demo
-
-// Application State
 let currentQuestionIndex = 0;
 let questions = []; // Loaded from questions.js
 let userSession = {
