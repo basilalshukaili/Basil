@@ -2,110 +2,111 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Mobile Neon Pulse</title>
+<title>Aura – Mobile Eye-Candy</title>
 <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
-<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="color-scheme" content="dark light">
 <style>
-/* ---------- RESET / BASE ---------- */
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --g1:#ff0055;
+  --g2:#00e0ff;
+  --g3:#6f00ff;
+  --blur:70px;
+  --radius:24px;
+}
+@media (prefers-color-scheme:light){
+  :root{
+    --bg:#f2f2f7;
+    --txt:#000;
+    --card:rgba(255,255,255,.25);
+    --blur:90px;
+  }
+}
 body{
-  height:100vh;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  background:#000;color:#fff;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-  overflow:hidden;
-  -webkit-user-select:none;user-select:none;
+  margin:0;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:var(--bg,#000);color:var(--txt,#fff);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  overflow:hidden;-webkit-user-select:none;user-select:none;
   -webkit-tap-highlight-color:transparent;
 }
-
-/* ---------- ANIMATED MESH BG ---------- */
 .bg{
   position:fixed;inset:0;
-  background:linear-gradient(125deg,#ff00c1,#00b8ff,#4900ff,#00ff95);
-  background-size:400% 400%;
-  animation:mesh 14s ease infinite;
-  filter:blur(70px) brightness(.6);
+  background:radial-gradient(circle at 30% 20%,var(--g1),transparent 50%),
+             radial-gradient(circle at 70% 80%,var(--g2),transparent 50%),
+             radial-gradient(circle at 50% 50%,var(--g3),transparent 50%);
+  filter:blur(var(--blur)) brightness(.65);
+  animation:shift 18s ease-in-out infinite;
   will-change:background-position;
 }
-@keyframes mesh{
-  0%{background-position:0% 50%}
-  50%{background-position:100% 100%}
-  100%{background-position:0% 50%}
+@keyframes shift{
+  0%,100%{transform:translate(0,0) scale(1)}
+  33%{transform:translate(-20%,10%) scale(1.15)}
+  66%{transform:translate(20%,-10%) scale(1.1)}
 }
-
-/* ---------- NEON TITLE ---------- */
 h1{
-  font-size:clamp(2rem,10vw,4rem);
+  font-size:clamp(2.2rem,11vw,4.5rem);
   font-weight:900;letter-spacing:.05em;text-transform:uppercase;
-  margin-bottom:6vh;
-  animation:neon 2.2s ease-in-out infinite alternate;
+  margin-bottom:8vh;
+  text-shadow:0 0 8px var(--g2),0 0 24px var(--g1);
+  animation:pulse 3s ease-in-out infinite;
 }
-@keyframes neon{
-  from{text-shadow:0 0 4px #fff,0 0 8px #fff,0 0 16px #0ff}
-  to{text-shadow:0 0 8px #fff,0 0 16px #fff,0 0 32px #f0f}
+@keyframes pulse{
+  50%{text-shadow:0 0 12px var(--g2),0 0 36px var(--g3)}
 }
-
-/* ---------- GLOW CARD ---------- */
 .card{
-  width:min(70vw,280px);
-  aspect-ratio:3/4;
+  width:min(72vw,300px);aspect-ratio:3/4;
   position:relative;
-  background:rgba(255,255,255,.08);
-  backdrop-filter:blur(12px);
-  -webkit-backdrop-filter:blur(12px);
-  border:1px solid rgba(255,255,255,.2);
-  border-radius:20px;
+  background:var(--card,rgba(255,255,255,.08));
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:var(--radius);
   transform-style:preserve-3d;
-  transition:transform .35s cubic-bezier(.15,1,.35,1);
+  transition:transform .3s cubic-bezier(.15,1,.35,1);
 }
 .card::before{
-  content:'';position:absolute;inset:-1px;border-radius:20px;
-  background:conic-gradient(from 0deg,#ff00c1,#00b8ff,#4900ff,#ff00c1);
-  z-index:-1;
-  animation:spin 5s linear infinite;
+  content:'';position:absolute;inset:-2px;border-radius:var(--radius);
+  background:conic-gradient(from 0deg,var(--g1),var(--g2),var(--g3),var(--g1));
+  z-index:-1;animation:spin 6s linear infinite;
 }
 @keyframes spin{to{transform:rotate(360deg)}}
-
-/* ---------- CTA BUTTON ---------- */
 button{
-  margin-top:8vh;padding:1rem 2.4rem;
-  font-size:1.1rem;font-weight:700;color:#000;
-  background:#fff;border:none;border-radius:50px;
-  cursor:pointer;box-shadow:0 4px 20px rgba(255,255,255,.25);
+  margin-top:8vh;padding:1rem 2.6rem;font-size:1.1rem;font-weight:700;
+  color:#000;background:#fff;border:none;border-radius:50px;
+  cursor:pointer;box-shadow:0 4px 30px rgba(255,255,255,.35);
   transition:transform .15s ease,box-shadow .15s ease;
 }
-button:active{
-  transform:scale(.96);
-  box-shadow:0 2px 10px rgba(255,255,255,.25);
-}
-
-/* ---------- PARTICLES ---------- */
+button:active{transform:scale(.95);box-shadow:0 2px 15px rgba(255,255,255,.25)}
 .particle{
-  position:absolute;border-radius:50%;
-  pointer-events:none;mix-blend-mode:screen;
-  animation:float linear infinite;
+  position:absolute;border-radius:50%;pointer-events:none;
+  mix-blend-mode:screen;animation:float linear infinite;
 }
 @keyframes float{
-  0%{transform:translateY(110vh) scale(0);opacity:1}
-  100%{transform:translateY(-10vh) scale(0);opacity:0}
+  0%{transform:translateY(120vh) scale(0);opacity:1}
+  100%{transform:translateY(-20vh) scale(0);opacity:0}
 }
+.ripple{
+  position:absolute;border-radius:50%;
+  background:rgba(255,255,255,.45);
+  transform:scale(0);animation:ripple .7s ease-out;
+}
+@keyframes ripple{to{transform:scale(6);opacity:0}}
 </style>
 </head>
 <body>
 
 <div class="bg"></div>
 
-<h1>Neon Pulse</h1>
+<h1>Aura</h1>
 
 <div class="card" id="card"></div>
 
-<button id="btn">Tap Me</button>
+<button id="btn">Tap Anywhere</button>
 
 <script>
 /* ---------- PARTICLES ---------- */
-function createParticle(){
+function particle(){
   const p=document.createElement('div');
   p.className='particle';
-  const s=Math.random()*18+6;
+  const s=Math.random()*22+6;
   p.style.width=p.style.height=s+'px';
   p.style.left=Math.random()*100+'%';
   p.style.background=`hsl(${Math.random()*360},100%,70%)`;
@@ -113,20 +114,47 @@ function createParticle(){
   document.body.appendChild(p);
   p.addEventListener('animationend',()=>p.remove());
 }
-setInterval(createParticle,180);
+setInterval(particle,160);
 
-/* ---------- TILT VIA DEVICEORIENTATION ---------- */
+/* ---------- TILT ---------- */
+const card=document.getElementById('card');
 window.addEventListener('deviceorientation',e=>{
-  const g=15; // max tilt in deg
-  const x=(e.beta-90)/90*g;  // -g..g
-  const y=e.gamma/90*g;      // -g..g
-  document.getElementById('card').style.transform=
-    `perspective(1000px) rotateX(${x}deg) rotateY(${y}deg)`;
+  const g=18;
+  const x=(e.beta-90)/90*g;
+  const y=e.gamma/90*g;
+  card.style.transform=`perspective(1000px) rotateX(${x}deg) rotateY(${y}deg)`;
 },true);
 
-/* ---------- TAPTIC FEEDBACK ---------- */
-document.getElementById('btn').addEventListener('click',()=>{
-  if('vibrate' in navigator) navigator.vibrate(10);
+/* ---------- RIPPLE ON ANY TAP ---------- */
+let last=0;
+document.body.addEventListener('touchstart',e=>{
+  if(Date.now()-last<120)return; // throttle
+  last=Date.now();
+  const r=document.createElement('span');
+  r.className='ripple';
+  const t=e.touches[0];
+  const size=Math.hypot(window.innerWidth,window.innerHeight);
+  r.style.width=r.style.height=size+'px';
+  r.style.left=t.clientX-size/2+'px';
+  r.style.top=t.clientY-size/2+'px';
+  document.body.appendChild(r);
+  r.addEventListener('animationend',()=>r.remove());
+  if('vibrate' in navigator) navigator.vibrate(8);
+});
+
+/* ---------- EASTER-EGG: SHAKE ---------- */
+let gx,gy,gz,lastG=0;
+window.addEventListener('devicemotion',e=>{
+  if(!e.accelerationIncludingGravity)return;
+  const{ x,y,z }=e.accelerationIncludingGravity;
+  const delta=Math.abs(x-gx)+Math.abs(y-gy)+Math.abs(z-gz);
+  if(delta>35 && Date.now()-lastG>1200){
+    lastG=Date.now();
+    document.body.style.filter='invert(1)';
+    setTimeout(()=>document.body.style.filter='',400);
+    if('vibrate' in navigator) navigator.vibrate([40,30,40]);
+  }
+  gx=x;gy=y;gz=z;
 });
 </script>
 </body>
