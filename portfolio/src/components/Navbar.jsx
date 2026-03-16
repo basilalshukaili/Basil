@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Shield } from 'lucide-react';
+import { Menu, X, Shield, BookOpen } from 'lucide-react';
 
 const navLinks = [
   { label: 'About', href: '#about' },
@@ -92,6 +93,15 @@ export default function Navbar() {
               </a>
             );
           })}
+
+          {/* Learn CTA */}
+          <Link
+            to="/learn"
+            className="ml-2 flex items-center gap-1.5 px-4 py-2 text-[13px] font-medium rounded-lg bg-gradient-to-r from-blue-500/10 to-cyan-400/10 border border-blue-500/20 text-blue-400 hover:text-blue-300 hover:border-blue-400/30 hover:shadow-[0_0_20px_rgba(59,130,246,0.1)] transition-all duration-300"
+          >
+            <BookOpen size={14} />
+            Learn
+          </Link>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -147,6 +157,23 @@ export default function Navbar() {
                     {link.label}
                   </motion.a>
                 ))}
+
+                {/* Learn link in mobile */}
+                <motion.div
+                  initial={{ opacity: 0, x: -12 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: navLinks.length * 0.05 }}
+                  className="mt-2 pt-2 border-t border-white/[0.06]"
+                >
+                  <Link
+                    to="/learn"
+                    className="flex items-center gap-2 py-3 px-4 rounded-xl text-[15px] font-medium text-blue-400 hover:text-blue-300 hover:bg-white/[0.04] transition-colors"
+                    onClick={() => setIsMobileOpen(false)}
+                  >
+                    <BookOpen size={16} />
+                    Learn with Basil
+                  </Link>
+                </motion.div>
               </div>
             </motion.div>
           </>

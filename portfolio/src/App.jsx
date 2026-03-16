@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import { motion, useScroll, AnimatePresence } from 'framer-motion';
 import { ArrowUp } from 'lucide-react';
 
@@ -11,6 +12,13 @@ import Skills from './components/Skills';
 import Methodology from './components/Methodology';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+
+import LearnLayout from './components/learn/LearnLayout';
+import LearnHub from './components/learn/LearnHub';
+import CategoryPage from './components/learn/CategoryPage';
+import SubcategoryPage from './components/learn/SubcategoryPage';
+import TopicPage from './components/learn/TopicPage';
+import ContentPage from './components/learn/ContentPage';
 
 /* ─── Scroll Progress Bar ────────────────────────────────── */
 function ScrollProgress() {
@@ -52,8 +60,8 @@ function ScrollToTop() {
   );
 }
 
-/* ─── App ────────────────────────────────────────────────── */
-export default function App() {
+/* ─── Portfolio Home (original page) ─────────────────────── */
+function PortfolioHome() {
   return (
     <div className="bg-[#0B0F1A] text-white min-h-screen noise-overlay">
       <ScrollProgress />
@@ -70,5 +78,21 @@ export default function App() {
       <Footer />
       <ScrollToTop />
     </div>
+  );
+}
+
+/* ─── App ────────────────────────────────────────────────── */
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<PortfolioHome />} />
+      <Route path="/learn" element={<LearnLayout />}>
+        <Route index element={<LearnHub />} />
+        <Route path=":categorySlug" element={<CategoryPage />} />
+        <Route path=":categorySlug/:subcategorySlug" element={<SubcategoryPage />} />
+        <Route path=":categorySlug/:subcategorySlug/:topicSlug" element={<TopicPage />} />
+        <Route path=":categorySlug/:subcategorySlug/:topicSlug/:subtopicSlug" element={<ContentPage />} />
+      </Route>
+    </Routes>
   );
 }
