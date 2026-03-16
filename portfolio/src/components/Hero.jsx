@@ -22,9 +22,9 @@ export default function Hero() {
 
       {/* ── Content ──────────────────────────────────────── */}
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 pt-24 sm:pt-28 pb-16 sm:pb-20 w-full">
-        <div className="flex flex-col lg:flex-row items-center gap-10 sm:gap-12 lg:gap-20">
+        <div className="flex flex-col items-center">
           {/* Text */}
-          <div className="flex-1 text-center lg:text-left">
+          <div className="text-center max-w-3xl">
             {/* Badge */}
             <motion.div
               initial={{ opacity: 0, y: 20, filter: 'blur(8px)' }}
@@ -55,7 +55,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.35 }}
-              className="text-base sm:text-xl text-slate-400 max-w-xl mx-auto lg:mx-0 mb-8 sm:mb-10 leading-relaxed px-1 sm:px-0"
+              className="text-base sm:text-xl text-slate-400 max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed px-1 sm:px-0"
             >
               Specialized in Threat Detection, Security Monitoring, and
               Penetration Testing — defending digital assets and strengthening
@@ -67,7 +67,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.45 }}
-              className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center lg:justify-start mb-8 sm:mb-10"
+              className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center mb-8 sm:mb-10"
             >
               <a
                 href="#experience"
@@ -92,52 +92,14 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="flex items-center gap-2 text-sm text-slate-500 justify-center lg:justify-start"
+              className="flex items-center gap-2 text-sm text-slate-500 justify-center"
             >
               <MapPin size={14} />
               <span>Muscat, Oman</span>
             </motion.div>
           </div>
 
-          {/* Profile Image */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.85, filter: 'blur(12px)' }}
-            animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
-            transition={{ duration: 0.9, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className="flex-shrink-0"
-          >
-            <div className="relative">
-              {/* Outer glow */}
-              <div className="absolute -inset-6 bg-gradient-to-r from-blue-500/20 via-cyan-400/10 to-blue-500/20 rounded-full blur-2xl animate-glow-pulse pointer-events-none" />
 
-              {/* Image container */}
-              <div className="relative w-48 h-48 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden ring-2 ring-white/[0.08] shadow-2xl">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent z-10 pointer-events-none" />
-                <img
-                  src={`${import.meta.env.BASE_URL}basil.jpg`}
-                  alt="Basil AlShuakili"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-              {/* Floating badge */}
-              <motion.div
-                animate={{ y: [0, -8, 0] }}
-                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-                className="hidden sm:flex absolute -right-3 top-10 px-3 py-1.5 rounded-xl bg-[#0d1220]/80 backdrop-blur-xl border border-white/[0.08] text-xs text-slate-300 shadow-lg items-center"
-              >
-                <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400 mr-1.5 animate-pulse" />
-                Available for work
-              </motion.div>
-
-              {/* Decorative ring */}
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
-                className="hidden sm:block absolute -inset-8 rounded-full border border-dashed border-white/[0.04] pointer-events-none"
-              />
-            </div>
-          </motion.div>
         </div>
 
         {/* Scroll Indicator */}

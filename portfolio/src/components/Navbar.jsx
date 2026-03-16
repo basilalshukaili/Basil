@@ -94,14 +94,6 @@ export default function Navbar() {
           })}
         </nav>
 
-        {/* Desktop CTA */}
-        <a
-          href={`${import.meta.env.BASE_URL}learn.html`}
-          className="hidden md:inline-flex items-center gap-2 text-[13px] font-semibold px-5 py-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 text-white shadow-[0_0_20px_rgba(59,130,246,0.25)] hover:shadow-[0_0_30px_rgba(59,130,246,0.45)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
-        >
-          Learn with Basil
-        </a>
-
         {/* Mobile Menu Button */}
         <button
           className="md:hidden relative w-10 h-10 flex items-center justify-center rounded-xl hover:bg-white/[0.06] transition-colors"
@@ -155,13 +147,6 @@ export default function Navbar() {
                     {link.label}
                   </motion.a>
                 ))}
-                <a
-                  href={`${import.meta.env.BASE_URL}learn.html`}
-                  className="mt-4 text-center text-sm font-semibold px-5 py-3 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 text-white"
-                  onClick={() => setIsMobileOpen(false)}
-                >
-                  Learn with Basil
-                </a>
               </div>
             </motion.div>
           </>
