@@ -1,0 +1,17 @@
+# Dependencies
+portfolio/node_modules/
+
+# Build output (intermediate)
+docs/
+
+# Environment
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
