@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Basil AlShuakili - CV</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    @page {
+      size: A4;
+      margin: 0.6in;
+      padding: 0;
+    }
+    @media print {
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      html, body {
+        height: 100%;
+      }
+    }
+    :root {
+      --ink: #0f172a;
+      --muted: #475569;
+      --line: #cbd5e1;
+      --accent: #0f4c81;
+      --accent-soft: #e6f0fa;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      color: var(--ink);
+      margin: 0;
+      font-size: 10.5pt;
+      line-height: 1.35;
+    }
+    h1,h2,h3 { margin: 0; }
+    .header {
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 10px;
+      margin-bottom: 12px;
+    }
+    .name { font-size: 24pt; font-weight: 750; letter-spacing: .2px; }
+    .title { color: var(--accent); font-weight: 650; margin-top: 2px; }
+    .contact { margin-top: 8px; color: var(--muted); font-size: 9.3pt; }
+    .contact a { color: var(--muted); text-decoration: none; }
+    .section { margin-top: 10px; }
+    .section h2 {
+      font-size: 10.5pt;
+      font-weight: 750;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: .9px;
+      margin-bottom: 4px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 2px;
+    }
+    p { margin: 4px 0; }
+    ul { margin: 4px 0 0 16px; padding: 0; }
+    li { margin: 2px 0; }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .job { margin-top: 6px; }
+    .job-head { display: flex; justify-content: space-between; gap: 10px; }
+    .job-title { font-weight: 700; }
+    .job-company { color: var(--muted); font-weight: 600; }
+    .job-date { color: var(--muted); white-space: nowrap; font-size: 9.3pt; }
+    .chips { margin-top: 2px; }
+    .chip {
+      display: inline-block;
+      border: 1px solid var(--line);
+      background: var(--accent-soft);
+      color: #123a61;
+      padding: 2px 6px;
+      margin: 2px 4px 0 0;
+      border-radius: 999px;
+      font-size: 8.6pt;
+    }
+    .small { font-size: 9.3pt; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="name">Basil AlShuakili</div>
+    <div class="title">Senior Information Security Engineer | Detection Engineering | SOC Operations | Security Validation</div>
+    <div class="contact">
+      Muscat, Oman | +968 9463 9405 | basilalshukaili@gmail.com | Website: https://basilalshukaili.github.io/Basil/
+    </div>
+  </header>
+
+  <section class="section">
+    <h2>Professional Summary</h2>
+    <p>Cybersecurity professional with practical experience across enterprise defense operations, detection engineering, and penetration testing. Currently serving as Senior Executive Information Security at Dhofar Insurance Company, leading SIEM/EDR/DLP/XDR rule engineering, attack simulation for detection validation, endpoint/server onboarding, and layered web/email threat controls. Strong foundation in SOC operations, incident triage, and adversary-oriented testing across network, web, and Active Directory environments.</p>
+  </section>
+
+  <section class="section">
+    <h2>Core Competencies</h2>
+    <div class="chips">
+      <span class="chip">SOC Operations</span><span class="chip">SIEM Detection Engineering</span><span class="chip">EDR/XDR</span><span class="chip">Incident Response</span><span class="chip">Threat Intelligence</span><span class="chip">Penetration Testing</span><span class="chip">Attack Simulation</span><span class="chip">PowerShell / Python / Batch</span><span class="chip">Zero Trust Access</span><span class="chip">Firewall & Web Filtering</span>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Professional Experience</h2>
+
+    <div class="job">
+      <div class="job-head">
+        <div>
+          <div class="job-title">Senior Executive Information Security</div>
+          <div class="job-company">Dhofar Insurance Company</div>
+        </div>
+        <div class="job-date">Dec 2025 – Present</div>
+      </div>
+      <ul>
+        <li>Lead security monitoring and incident handling workflows, improving response readiness for high-risk alerts.</li>
+        <li>Engineer and tune SIEM, EDR, DLP, and XDR detections to improve signal quality and reduce analyst noise.</li>
+        <li>Execute controlled attack simulation to validate newly built detection logic and verify alert behavior.</li>
+        <li>Perform ongoing penetration testing across network services, Active Directory, and web applications, and provide remediation guidance.</li>
+        <li>Configure XDR email controls to reduce phishing, spam, and malicious message exposure.</li>
+        <li>Implement Zero Trust access improvements using Microsoft Global Secure Access to reduce traditional VPN dependence.</li>
+        <li>Apply layered web filtering at firewall and EDR levels to control malicious and non-business traffic.</li>
+        <li>Onboard endpoints and servers into EDR with policy baselining for broader visibility and response coverage.</li>
+        <li>Build PowerShell, Python, and Batch automation scripts for repetitive SOC and hardening operations.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <div>
+          <div class="job-title">SOC Analyst L1</div>
+          <div class="job-company">Omantel (via Insight Information Security)</div>
+        </div>
+        <div class="job-date">Feb 2025 – Nov 2025</div>
+      </div>
+      <ul>
+        <li>Monitored SIEM and security consoles continuously and triaged alerts by severity and business impact.</li>
+        <li>Investigated suspicious activity through multi-source log correlation and telemetry analysis.</li>
+        <li>Performed endpoint, email, and network investigations, including PCAP review for phishing/malware/C2 indicators.</li>
+        <li>Documented incidents with complete evidence trails and analyst notes for escalation and compliance traceability.</li>
+        <li>Executed playbook-driven initial containment actions and escalated validated incidents to L2/L3 teams.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <div>
+          <div class="job-title">Information Security Consultant</div>
+          <div class="job-company">Dhofar Insurance Company</div>
+        </div>
+        <div class="job-date">May 2023 – Dec 2024</div>
+      </div>
+      <ul>
+        <li>Performed Android mobile application assessments using static and dynamic testing approaches.</li>
+        <li>Conducted vulnerability assessments across infrastructure, internal services, and servers.</li>
+        <li>Executed web application penetration testing and produced risk-based technical reports.</li>
+        <li>Performed network and Active Directory testing, including privilege escalation path analysis.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section grid-2">
+    <div>
+      <h2>Technical Skills</h2>
+      <p><strong>Security Operations:</strong> SIEM alert triage, incident ticketing, escalation, log correlation, SOC handover reporting</p>
+      <p><strong>Detection Engineering:</strong> SIEM/EDR/DLP/XDR rule development and tuning, false-positive reduction, validation testing</p>
+      <p><strong>Threat Analysis:</strong> PCAP analysis, endpoint/email investigations, malware triage, IOC enrichment</p>
+      <p><strong>Offensive Security:</strong> Network services testing, AD assessment, web app pentesting, Android app testing</p>
+      <p><strong>Automation:</strong> PowerShell, Python, Batch scripting</p>
+      <p><strong>Architecture/Controls:</strong> Microsoft Global Secure Access, firewall + EDR web filtering</p>
+    </div>
+    <div>
+      <h2>Key Projects & Initiatives</h2>
+      <ul>
+        <li><strong>Enterprise Detection Engineering Program:</strong> Built and tuned SIEM/EDR/DLP/XDR detections with attack-simulation-based validation.</li>
+        <li><strong>Zero Trust Access Modernization:</strong> Supported deployment of Microsoft Global Secure Access to strengthen identity-centric access and reduce VPN dependence.</li>
+        <li><strong>Layered Email & Web Threat Defense:</strong> Implemented XDR email detection and dual-layer web filtering controls.</li>
+        <li><strong>Security Automation Workstream:</strong> Developed scripts to standardize repetitive SOC and hardening tasks.</li>
+      </ul>
+
+      <h2>Achievements</h2>
+      <ul>
+        <li>1st Place – CTF (Insight Information Security & Oman CERT)</li>
+        <li>5th Place (Arab & Africa Region) – CyberTalents Cybersecurity CTF</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section grid-2">
+    <div>
+      <h2>Certifications & Training</h2>
+      <ul>
+        <li>Penetration Testing Platform, Hack The Box Academy (2024 – Present)</li>
+        <li>Security Operations & SIEM, Immersive Labs Platform (2025)</li>
+      </ul>
+    </div>
+    <div>
+      <h2>Education</h2>
+      <p><strong>Bachelor of Computer Science (Cybersecurity)</strong><br>
+      Sultan Qaboos University | 2019 – 2025</p>
+      <p class="small">Portfolio URL: https://basilalshukaili.github.io/Basil/</p>
+    </div>
+  </section>
+</body>
+</html>
