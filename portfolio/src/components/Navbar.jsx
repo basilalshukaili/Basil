@@ -5,6 +5,7 @@ import { Menu, X, Shield, BookOpen } from 'lucide-react';
 
 const navLinks = [
   { label: 'About', href: '#about' },
+  { label: 'Achievements', href: '#achievements' },
   { label: 'Education', href: '#education' },
   { label: 'Experience', href: '#experience' },
   { label: 'Skills', href: '#skills' },

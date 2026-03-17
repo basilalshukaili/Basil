@@ -6,6 +6,7 @@ import { ArrowUp } from 'lucide-react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
+import Achievements from './components/Achievements';
 import Education from './components/Education';
 import Experience from './components/Experience';
 import Skills from './components/Skills';
@@ -69,6 +70,7 @@ function PortfolioHome() {
       <main>
         <Hero />
         <About />
+        <Achievements />
         <Education />
         <Experience />
         <Skills />

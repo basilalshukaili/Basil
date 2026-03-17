@@ -25,7 +25,11 @@ const contactInfo = [
 ];
 
 const socialLinks = [
-  { icon: Linkedin, href: '#', label: 'LinkedIn' },
+  {
+    icon: Linkedin,
+    href: 'https://www.linkedin.com/in/basil-alshukaili-45b230236?utm_source=share_via&utm_content=profile&utm_medium=member_android',
+    label: 'LinkedIn',
+  },
   { icon: Github, href: '#', label: 'GitHub' },
   { icon: Twitter, href: '#', label: 'Twitter' },
 ];
@@ -84,6 +88,8 @@ export default function Contact() {
             <a
               key={link.label}
               href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label={link.label}
               className="w-12 h-12 rounded-xl bg-white/[0.03] border border-white/[0.06] flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/[0.08] hover:border-white/[0.12] hover:shadow-[0_4px_20px_rgba(59,130,246,0.1)] transition-all duration-300 hover:-translate-y-1"
             >

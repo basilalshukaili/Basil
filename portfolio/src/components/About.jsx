@@ -21,25 +21,26 @@ export default function About() {
           className="max-w-3xl mx-auto space-y-5"
         >
           <p className="text-lg text-slate-300 leading-relaxed">
-            I am a dedicated information security specialist with a passion
-            for defending digital assets and improving organizational security
-            posture. With a Bachelor's degree in Computer Science specializing
-            in Cybersecurity from Sultan Qaboos University, I combine academic
-            excellence with hands-on practical experience in enterprise security
-            operations.
+            I am an information security professional focused on practical,
+            measurable security outcomes. With a Bachelor's degree in Computer
+            Science (Cybersecurity) from Sultan Qaboos University, I combine
+            strong technical fundamentals with hands-on enterprise experience
+            across monitoring, detection engineering, and security validation.
           </p>
           <p className="text-slate-400 leading-relaxed">
-            My cybersecurity journey has evolved from foundational security
-            consulting to specialized roles in Security Operations Center (SOC)
-            analysis and now into a comprehensive information security position.
-            I thrive on the challenge of staying ahead of emerging threats while
-            implementing robust security measures.
+            My journey spans security consulting, SOC analysis, and now security
+            leadership responsibilities. I design and tune SIEM, EDR, DLP, and
+            XDR detections, then validate them through controlled attack
+            simulation to ensure rules are actionable and resilient in real
+            operational conditions.
           </p>
           <p className="text-slate-400 leading-relaxed">
             Currently serving as Senior Executive Information Security at Dhofar
-            Insurance Company, I oversee critical security functions including
-            threat monitoring, detection engineering, and proactive security
-            testing across enterprise environments.
+            Insurance Company, I lead initiatives including endpoint and server
+            onboarding into EDR, layered web filtering through firewall and EDR,
+            security automation using PowerShell/Python/batch scripts, and Zero
+            Trust access modernization through Global Secure Access to reduce
+            reliance on traditional VPN architecture.
           </p>
         </motion.div>
       </div>

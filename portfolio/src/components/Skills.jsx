@@ -7,10 +7,28 @@ const skillCategories = [
     title: 'Security Operations',
     gradient: 'from-blue-400 to-blue-500',
     skills: [
+      { name: 'SIEM Alert Triage & Prioritization', level: 91 },
+      { name: 'Incident Ticketing & Escalation', level: 90 },
+      { name: 'Log Correlation & Event Investigation', level: 88 },
       { name: 'SIEM Detection Engineering', level: 92 },
       { name: 'EDR Configuration & Monitoring', level: 88 },
+      { name: 'Threat Intelligence & IOC Enrichment', level: 84 },
+      { name: 'XDR Email Detection & Anti-Phishing Tuning', level: 86 },
+      { name: 'Endpoint & Server EDR Onboarding', level: 89 },
       { name: 'DLP Implementation', level: 85 },
       { name: 'Incident Response', level: 90 },
+    ],
+  },
+  {
+    title: 'Security Engineering & Automation',
+    gradient: 'from-emerald-400 to-teal-500',
+    skills: [
+      { name: 'Attack Simulation for Rule Validation', level: 90 },
+      { name: 'PowerShell Security Automation', level: 87 },
+      { name: 'Python Security Scripting', level: 88 },
+      { name: 'Batch Scripting for Operational Tasks', level: 82 },
+      { name: 'Firewall + EDR Web Filtering Controls', level: 84 },
+      { name: 'Zero Trust Access (Global Secure Access)', level: 81 },
     ],
   },
   {
@@ -28,9 +46,10 @@ const skillCategories = [
     gradient: 'from-violet-400 to-violet-500',
     skills: [
       { name: 'PCAP & Traffic Analysis', level: 87 },
-      { name: 'Email Security Analysis', level: 83 },
-      { name: 'Malware Analysis', level: 78 },
-      { name: 'Threat Intelligence', level: 82 },
+      { name: 'Email Threat Analysis', level: 85 },
+      { name: 'Endpoint Threat Investigation', level: 82 },
+      { name: 'Malware Triage & Basic Analysis', level: 78 },
+      { name: 'Threat Intelligence Operations', level: 82 },
     ],
   },
 ];
@@ -77,10 +96,10 @@ export default function Skills() {
         <SectionHeading
           label="Expertise"
           title="Technical Skills"
-          description="Core competencies across security operations, penetration testing, and threat analysis."
+          description="Structured capabilities across SOC operations, detection engineering, security automation, Zero Trust access, and penetration testing." 
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6">
           {skillCategories.map((category, catIndex) => (
             <GlassCard
               key={category.title}

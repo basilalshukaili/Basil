@@ -18,7 +18,7 @@ const education = [
     icon: ShieldCheck,
     title: 'Penetration Testing Platform',
     institution: 'Hack The Box Academy',
-    date: 'Completed 2024',
+    date: '2024 — Present',
     description:
       'Comprehensive training in advanced penetration testing methodologies, enterprise network exploitation, and Active Directory security.',
     color: 'from-cyan-500/20 to-cyan-600/10',
@@ -28,7 +28,7 @@ const education = [
     icon: Award,
     title: 'Security Operations & SIEM',
     institution: 'Immersive Labs Platform',
-    date: 'Ongoing',
+    date: '2025',
     description:
       'Advanced training in SIEM configuration, threat detection engineering, and security analytics.',
     color: 'from-violet-500/20 to-violet-600/10',

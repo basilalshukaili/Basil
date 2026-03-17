@@ -7,41 +7,45 @@ const experiences = [
     title: 'Senior Executive Information Security',
     company: 'Dhofar Insurance Company',
     date: 'Dec 2025 — Present',
-    current: true,
     achievements: [
-      'Oversee security alerts and incident management, ensuring timely detection and response to security threats',
-      'Develop and implement custom SIEM detection rules for sophisticated attack patterns and anomalous behaviors',
-      'Create specialized EDR detection rules enhancing threat visibility across all endpoints',
-      'Design and deploy DLP detection rules, monitoring alerts to prevent sensitive data exfiltration',
-      'Conduct penetration testing of network services, identifying vulnerabilities and remediation strategies',
-      'Perform comprehensive Active Directory security assessments and privilege escalation testing',
-      'Execute thorough web application penetration testing using automated and manual methodologies',
+      'Lead security monitoring and incident handling activities, ensuring timely triage, containment, and escalation of high-risk alerts',
+      'Develop and tune custom SIEM, EDR, DLP, and XDR detections to improve signal quality and reduce alert fatigue',
+      'Perform controlled attack simulation to validate newly created detection rules and verify expected alert behavior',
+      'Configure XDR email detection policies to mitigate phishing, spam, and malicious email threats',
+      'Implement Microsoft Global Secure Access to support Zero Trust access objectives and reduce traditional VPN dependence',
+      'Apply layered web filtering controls at firewall and EDR levels to block malicious and non-business web categories',
+      'Onboard endpoints and servers into EDR with policy baselining to strengthen enterprise-wide visibility and response readiness',
+      'Build security automation scripts in PowerShell, Python, and batch for repetitive SOC and hardening workflows',
+      'Execute recurring penetration testing across network services, Active Directory, and web applications with remediation guidance',
     ],
   },
   {
     title: 'SOC Analyst L1',
     company: 'Omantel (via Insight Information Security)',
     date: 'Feb 2025 — Nov 2025',
-    current: false,
     achievements: [
-      'Conducted in-depth PCAP analysis for network traffic investigation and threat identification',
-      'Performed email security analysis to detect phishing campaigns and malicious attachments',
-      'Executed endpoint security analysis and malware investigation across enterprise systems',
-      'Developed and refined detection rules for improved threat visibility',
-      'Analyzed threat intelligence feeds and generated DDoS attack mitigation reports',
-      'Enhanced technical skills through continuous learning on the Immersive Labs platform',
+      'Monitored SIEM and security consoles continuously and performed first-level alert triage based on severity and business impact',
+      'Investigated suspicious events through log correlation (Windows, Linux, firewall, proxy, DNS, and endpoint telemetry)',
+      'Performed endpoint, email, and network investigations including PCAP review for phishing, malware, and command-and-control activity',
+      'Created and updated incident tickets with clear timelines, evidence, and analyst notes for escalation and audit traceability',
+      'Executed initial containment actions following SOC playbooks (host isolation, IOC blocking, and account-related escalations)',
+      'Conducted IOC enrichment and threat intelligence lookups to improve investigation depth and decision quality',
+      'Escalated validated incidents to L2/L3 teams with actionable context, reducing handoff time during active incidents',
+      'Supported shift handover reporting and operational metrics to maintain continuity across 24/7 SOC operations',
+      'Contributed to detection tuning feedback by documenting recurring false positives and suspicious behavior patterns',
     ],
   },
   {
     title: 'Information Security Consultant',
     company: 'Dhofar Insurance Company',
-    date: 'May 2023 — Sep 2024',
-    current: false,
+    date: 'May 2023 — Dec 2024',
     achievements: [
-      'Conducted comprehensive mobile Android application security assessments and penetration testing',
-      'Performed vulnerability assessments across information systems and infrastructure',
-      'Executed detailed web application penetration testing with full remediation reporting',
-      'Conducted network penetration testing and Active Directory privilege escalation testing',
+      'Performed mobile application security assessments (Android) including static and dynamic testing techniques',
+      'Executed vulnerability assessments across infrastructure, servers, and internal services with prioritized remediation recommendations',
+      'Conducted web application penetration testing and delivered detailed technical reports with risk ratings and business impact',
+      'Performed network and Active Directory security testing, including privilege escalation path analysis',
+      'Collaborated with technical teams to validate remediation actions through re-testing and verification cycles',
+      'Supported recurring penetration testing activities as part of continuous security improvement initiatives',
     ],
   },
 ];
@@ -78,29 +82,16 @@ export default function Experience() {
               >
                 {/* Timeline Dot */}
                 <div className="absolute left-0 md:left-1 top-[6px]">
-                  <div
-                    className={`w-[15px] h-[15px] md:w-[23px] md:h-[23px] rounded-full flex items-center justify-center ${
-                      exp.current
-                        ? 'bg-blue-500 shadow-[0_0_16px_rgba(59,130,246,0.5)]'
-                        : 'bg-[#151b2e] border-2 border-slate-700'
-                    } ring-4 ring-[#0B0F1A]`}
-                  >
-                    {exp.current && (
-                      <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-white" />
-                    )}
+                  <div className="w-[15px] h-[15px] md:w-[23px] md:h-[23px] rounded-full flex items-center justify-center bg-[#151b2e] border-2 border-slate-700 ring-4 ring-[#0B0F1A]">
+                    <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-blue-400/80" />
                   </div>
                 </div>
 
-                {/* Date & Status */}
+                {/* Date */}
                 <div className="flex items-center gap-3 mb-3">
                   <span className="text-sm text-slate-500 font-medium">
                     {exp.date}
                   </span>
-                  {exp.current && (
-                    <span className="text-[11px] px-2.5 py-0.5 rounded-full bg-emerald-500/[0.08] text-emerald-400 border border-emerald-500/[0.15] font-medium">
-                      Current Role
-                    </span>
-                  )}
                 </div>
 
                 {/* Card */}
